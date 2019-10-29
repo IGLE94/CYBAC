@@ -1,5 +1,11 @@
 <?php
 
+// App\User::create([
+// 	'name' => 'Geremias',
+// 	'email' => 'geremias@gmail.com',
+// 	'password' => '12341234'
+// ]);
+
 Route::view('/', 'home')->name('home');
 
 
@@ -12,7 +18,10 @@ Route::view('/', 'home')->name('home');
 // Route::delete('orders/{id}', ['as' => 'orders.destroy', 'uses' => 'OrdenController@destroy']);
 
 Route::resource('ordenes', 'OrdenController');
+Route::resource('clientes', 'ClientesController');
+Route::resource('servicios', 'ServicioController')->except('show');
 
 
-Auth::routes(['register' => false]);
+Auth::routes();
+// ['register' => false]
 

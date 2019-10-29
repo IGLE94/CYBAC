@@ -16,9 +16,9 @@
 
 					<hr>
 					<p>
-					<label for="tipoServicio">Tipo de Servicio:</label>
-						<select id="tipoServicio" class="form-control" name="tipoServicio">
-							<option selected>{{ $order->tipoServicio }}</option>
+					<label for="servicio">Tipo de Servicio:</label>
+						<select id="servicio" class="form-control" name="servicio">
+							<option selected>{{ $order->servicio }}</option>
 							<option>Gratis</option>
 							<option>Manual</option>
 						</select>

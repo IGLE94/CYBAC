@@ -15,7 +15,9 @@
 				<tr>
 					<th>Orden</th>
 					<th>Tipo de Servicio</th>
+					<th>Descripción</th>
 					<th>Fecha de Recepción</th>
+					<th>Cliente</th>
 					@auth
 					<th>Acciones</th>
 					@endauth
@@ -30,11 +32,13 @@
 							</a>
 						</td>
 						<td>
-							{{ $orden->tipoServicio }}
+							--------------
 						</td>
+						<td>{{ $orden->descripcion }}</td>
 						<td>
 							{{ $orden->created_at->format('d/m/Y') }}
 						</td>
+						<td>{{ $orden->cliente->nombre }} {{ $orden->cliente->ap_paterno }} {{ $orden->cliente->ap_materno }}</td>
 						@auth
 						<td>
 							<a class="btn btn-outline-primary" href="{{ route('ordenes.edit', $orden->id) }}">Editar</a>

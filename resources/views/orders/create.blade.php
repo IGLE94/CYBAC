@@ -13,16 +13,36 @@
 
 					@csrf
 					<h1 class="display-4">Agregar Orden</h1>
+					<a class="btn btn-primary" href="{{ route('servicios.index') }}">Agregar nuevo servicio</a>
 					<hr>
 					<div class="form-group">
-						<label for="servicio">Tipo de Servicio:</label>
-						<input class="form-control bg-light shadow-sm @error('is-invalid') @else border-0 @enderror border-0" 
-							id="servicio" 
-							name="tipoServicio" 
-							placeholder="Ingrese el tipo de Servicio" 
-							value="{{ old('servicio') }}">
+						<label>Tipo de Servicio:
+							<select class="custom-select" name="servicio">
+								<option disabled="">Tipo de Servicio</option>
+								<option>Gratis</option>
+								<option>Manual</option>
+							</select>
+						</label>
+					</div>
 
-							@error('tipoServicio')
+					<div class="form-group">
+						<label for="descripcion">Descripción:</label>
+						<textarea class="form-control" 
+							rows="3" 
+							id="descripcion"
+							name="descripcion" 
+							placeholder="Ingrese la descripción del equipo de Cómputo">		
+								{{ old('descripcion') }}
+						</textarea>
+
+						{{-- <label for="descripcion">Descripción:</label>
+						<input class="form-control bg-light shadow-sm @error('is-invalid') @else border-0 @enderror border-0" 
+							id="descripcion" 
+							name="descripcion" 
+							placeholder="Ingrese la descripcion del equipo" 
+							value="{{ old('descripcion') }}"> --}}
+
+							@error('descripcion')
 								<span class="invalid-feelback" role="alert">
 									<strong>{{ $message }}</strong>
 								</span>
@@ -30,16 +50,24 @@
 
 					</div>
 
-					{{-- <label>Tipo de Servicio:
-						<select name="tipoServicio">
-							<option>Tipo de Servicio</option>
-							<option>Gratis</option>
-							<option>Manual</option>
-						</select>
-					</label> --}}
+					<div class="form-group">
+						<label for="costoServicio">Costo:</label>
+						<input class="form-control bg-light shadow-sm @error('is-invalid') @else border-0 @enderror border-0" 
+						id="costoServicio" 
+						name="costoServicio"
+						type="number" 
+						placeholder="Ingrese el costo total del servicio"
+						value="{{ old('costoServicio') }}">
+
+						@error('costoServicio')
+							<span class="invalid-feelback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
+					</div>
 
 					<button class="btn btn-primary btn-lg btn-block">Agregar</button>
-
+					<a class="btn btn-outline-danger btn-block" href="{{ route('servicios.index') }}">Cancelar</a>
 				</form>
 		</div>
 	</div>
