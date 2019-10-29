@@ -27,7 +27,7 @@
 
 					<div class="form-group">
 						<label for="descripcion">Descripción:</label>
-						<textarea class="form-control" 
+						<textarea class="form-control @error('descripcion') is-invalid @else border-0 @enderror" 
 							rows="3" 
 							id="descripcion"
 							name="descripcion" 
@@ -43,7 +43,7 @@
 							value="{{ old('descripcion') }}"> --}}
 
 							@error('descripcion')
-								<span class="invalid-feelback" role="alert">
+								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
 								</span>
 							@enderror	
@@ -52,7 +52,7 @@
 
 					<div class="form-group">
 						<label for="costoServicio">Costo:</label>
-						<input class="form-control bg-light shadow-sm @error('is-invalid') @else border-0 @enderror border-0" 
+						<input class="form-control bg-light shadow-sm @error('costoServicio') is-invalid @else border-0 @enderror" 
 						id="costoServicio" 
 						name="costoServicio"
 						type="number" 
@@ -60,7 +60,7 @@
 						value="{{ old('costoServicio') }}">
 
 						@error('costoServicio')
-							<span class="invalid-feelback" role="alert">
+							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
 						@enderror

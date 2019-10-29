@@ -14,14 +14,14 @@
 					<hr>
 					<div class="form-group">
 						<label for="servicio">Servicio:</label>
-						<input class="form-control bg-light shadow-sm @error('is-invalid') @else border-0 @enderror border-0"
+						<input class="form-control bg-light shadow-sm @error('servicio') is-invalid @else border-0 @enderror"
 						id="servicio" 
 						name="servicio"
 						placeholder="Ingrese el servicio"
 						value="{{ old('servicio') }}">
 
 						@error('servicio')
-							<span class="invalid-feelback" role="alert">
+							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
 						@enderror
