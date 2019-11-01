@@ -8,7 +8,7 @@
 			<div class="col-12 col-lg-6">
 				<h1 class="display-4 text-primary">Grupo CYBAC</h1>
 				<p class="lead text-secondary">
-					Somos una empresa dedica al Desarrollo Aplicaciones
+					Somos una empresa dedica al Desarrollo de Aplicaciones
 				</p>
 			</div>
 			<div class="col-12 col-lg-6">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateServiceRequest;
+// use App\Http\Requests\UpdateServiceRequest;
 use App\Servicio;
 use Illuminate\Http\Request;
 
@@ -74,11 +75,13 @@ class ServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateServiceRequest $request, $id)
     {
         Servicio::findOrFail($id)->update($request->all());
 
-        return redirect()->route('servicios.index');
+        // return redirect()->route('servicios.index');
+        return back()->with('info', 'Servicio Actualizado');
+        // return redirect()->route('servicios.index')->with('info', 'Servicio Actualizado');
     }
 
     /**

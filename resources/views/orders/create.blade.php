@@ -5,33 +5,83 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-sm-10 col-lg-6 mx-auto">
+		<div class="col-12 col-sm-10 col-lg-6 mx-auto p-5">
 
 				<form class="bg-white shadow rounded py-3 px-4" 
 					method="POST" 
 					action="{{ route('ordenes.store') }}">
 
 					@csrf
-					<h1 class="display-4">Agregar Orden</h1>
+
+					<div class="form-group">
+						@include('partials.navClientOrder')
+					</div>
+
+					<h4 align="center"><b>Agregar Orden</b></h1>
+
 					<a class="btn btn-primary" href="{{ route('servicios.index') }}">Agregar nuevo servicio</a>
 					<hr>
 					<div class="form-group">
-						<label>Tipo de Servicio:
-							<select class="custom-select" name="servicio">
-								<option disabled="">Tipo de Servicio</option>
-								<option>Gratis</option>
-								<option>Manual</option>
+						<label for="servicio">Tipo de Servicio:</label>
+							<select class="custom-select bg-light shadow-sm @error('servicio') is-invalid @else border-0 @enderror" 
+								id="servicio" 
+								name="servicio">
+									<option selected disabled="">Tipo de Servicio</option>
+									@foreach($servicios as $id => $servicio)
+										<option value="{{ $id }}">{{ $servicio }}</option>
+									@endforeach
 							</select>
-						</label>
+
+							@error('servicio')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+					</div>
+
+					<div class="form-group">
+						<label for="cliente">Cliente:</label>
+						<select class="custom-select bg-light shadow-sm @error('cliente') is-invalid @else border-0 @enderror"
+							id="cliente"
+							name="cliente">
+								<option selected disabled>Elija el cliente</option>
+								@foreach($clientes as $id => $cliente)
+									<option value="{{ $id }}">{{ $cliente }}</option>
+								@endforeach
+						</select>
+
+						@error('cliente')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
+					</div>
+
+					<div class="form-group">
+						<label for="equipo">Equipo:</label>
+						<select class="custom-select bg-light shadow-sm @error('equipo') is-invalid @else border-0 @enderror"
+							id="equipo"
+							name="equipo">
+								<option selected disabled>Elija el equipo</option>
+								@foreach($equipos as $id => $equipo)
+									<option value="{{ $id }}">{{ $equipo }}</option>
+								@endforeach
+						</select>
+						
+						@error('equipo')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
 					</div>
 
 					<div class="form-group">
 						<label for="descripcion">Descripción:</label>
-						<textarea class="form-control @error('descripcion') is-invalid @else border-0 @enderror" 
+						<textarea class="form-control bg-light shadow-sm @error('descripcion') is-invalid @else border-0 @enderror" 
 							rows="3" 
 							id="descripcion"
 							name="descripcion" 
-							placeholder="Ingrese la descripción del equipo de Cómputo">		
+							placeholder="Ingrese la descripción de la orden">		
 								{{ old('descripcion') }}
 						</textarea>
 
@@ -67,7 +117,7 @@
 					</div>
 
 					<button class="btn btn-primary btn-lg btn-block">Agregar</button>
-					<a class="btn btn-outline-danger btn-block" href="{{ route('servicios.index') }}">Cancelar</a>
+					<a class="btn btn-outline-danger btn-block" href="{{ route('ordenes.index') }}">Cancelar</a>
 				</form>
 		</div>
 	</div>

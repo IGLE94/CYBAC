@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
+use App\Equipo;
 use App\Http\Requests\CreateOrderRequest;
 use App\Order;
+use App\Servicio;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
@@ -34,7 +37,11 @@ class OrdenController extends Controller
      */
     public function create()
     {
-        return view('orders.create');
+        $servicios = Servicio::pluck('servicio', 'id');
+        $clientes = Cliente::pluck('nombre', 'id');
+        $equipos = Equipo::pluck('modelo', 'id');
+
+        return view('orders.create', compact('servicios', 'clientes', 'equipos'));
     }
 
     /**
@@ -45,15 +52,18 @@ class OrdenController extends Controller
      */
     public function store(CreateOrderRequest $request)
     {
-
         // Guardar la  Orden 
         // DB::table('orders')->insert([
         //     "tipoServicio" => $request->input('tipoServicio'),
         //     "created_at" => Carbon::now(),
         //     "updated_at" => Carbon::now(),
         // ]);
-
-        Order::create($request->all());
+        
+        $orden = Order::create($request->all());
+        $orden->servicio_id = $request->input('servicio');
+        $orden->cliente_id = $request->input('cliente');
+        $orden->equipo_id = $request->input('equipo');
+        $orden->save();
 
         // Redireccionar la Orden
         return redirect()->route('ordenes.index');

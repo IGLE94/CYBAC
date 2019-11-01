@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Cliente;
-use App\Http\Requests\CreateClientRequest;
-use App\Http\Requests\UpdateClientRequest;
+use App\Equipo;
+use App\Http\Requests\CreateEquipoRequest;
 use Illuminate\Http\Request;
 
-class ClientesController extends Controller
+class EquiposController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::all();
+        $equipos = Equipo::all();
 
-        return view('clientes.index', compact('clientes'));
+        return view('equipos.index', compact('equipos'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view('clientes.create');
+        return view('equipos.create');
     }
 
     /**
@@ -37,11 +36,11 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateClientRequest $request)
+    public function store(CreateEquipoRequest $request)
     {
-        Cliente::create($request->all());
+        Equipo::create($request->all());
 
-        return redirect()->route('equipos.create');
+        return redirect()->route('ordenes.create');
     }
 
     /**
@@ -52,9 +51,7 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        $cliente = Cliente::findOrFail($id);
-
-        return view('clientes.show', compact('cliente'));
+        //
     }
 
     /**
@@ -65,9 +62,9 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Cliente::findOrFail($id);
+        $equipo = Equipo::findOrFail($id);
 
-        return view('clientes.edit', compact('cliente'));
+        return view('equipos.edit', compact('equipo'));
     }
 
     /**
@@ -77,11 +74,11 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClientRequest $request, $id)
+    public function update(CreateEquipoRequest $request, $id)
     {
-        Cliente::findOrFail($id)->update($request->all());
+        Equipo::findOrFail($id)->update($request->all());
 
-        return redirect()->route('clientes.index');
+        return redirect()->route('equipos.index');
     }
 
     /**
@@ -92,7 +89,7 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-        Cliente::findOrFail($id)->delete();
+        Equipo::findOrFail($id)->delete();
 
         return back();
     }

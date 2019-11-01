@@ -16,9 +16,10 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('descripcion');
-            $table->integer('costoServicio');
+            $table->integer('costoServicio')->unsigned();
             $table->integer('cliente_id')->nullable();
             $table->integer('servicio_id')->nullable();
+            $table->integer('equipo_id')->nullable();
             $table->timestamps();
         });
     }

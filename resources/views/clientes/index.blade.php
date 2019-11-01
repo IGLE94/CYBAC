@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Clientes')
+
 @section('content')
 	<div class="container">
 		
@@ -27,22 +29,23 @@
 							</a>
 						</td>
 						<td>
-							{{ $cliente->ap_paterno }}
+							{{ $cliente->paterno }}
 						</td>
 						<td>
-							{{ $cliente->ap_materno }}
+							{{ $cliente->materno }}
 						</td>
 						<td>{{ $cliente->email }}</td>
 						<td>{{ $cliente->telefono }}</td>
-						{{-- <td>
+						<td>
 							<a class="btn btn-outline-primary" href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
 
 							<form style="display:inline" method="POST" action="{{ route('clientes.destroy', $cliente->id) }}">
-							{!! method_field('DELETE') !!}	
+							{{-- {!! method_field('DELETE') !!}	 --}}
+							@method('DELETE')
 							@csrf
 								<button class="btn btn-outline-danger" type="submit">Eliminar</button>	
 							</form>
-						</td> --}}
+						</td>
 					</tr>
 				@endforeach
 			</tbody>

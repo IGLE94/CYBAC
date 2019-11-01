@@ -6,7 +6,7 @@
 		<div class="d-flex justify-content-between align-items-center mb-3">
 			<h1 class="display-4">Ordenes</h1>
 			@auth
-				<a class="btn btn-primary" href="{{ route('ordenes.create') }}">Agregar Orden</a>
+				<a class="btn btn-primary" href="{{ route('clientes.create') }}">Agregar Orden</a>
 			@endauth
 		</div>
 
@@ -16,8 +16,8 @@
 					<th>Orden</th>
 					<th>Tipo de Servicio</th>
 					<th>Descripción</th>
-					<th>Fecha de Recepción</th>
 					<th>Cliente</th>
+					<th>Fecha de Recepción</th>
 					@auth
 					<th>Acciones</th>
 					@endauth
@@ -31,14 +31,31 @@
 								{{ $orden->id }}
 							</a>
 						</td>
-						<td>
-							--------------
-						</td>
+
+						@if($orden->servicio_id)
+							<td>
+								{{ $orden->servicio->servicio }}
+							</td>
+						@else
+							<td></td>
+						@endif	
+
 						<td>{{ $orden->descripcion }}</td>
+						
+						@if($orden->cliente_id)
+							<td>
+								<a href="{{ route('clientes.show', $orden->cliente_id) }}">
+								{{ $orden->cliente->nombre }} {{ $orden->cliente->paterno }} {{ $orden->cliente->materno }}
+								</a>
+							</td>
+						@else
+							<td></td>
+						@endif
+
 						<td>
 							{{ $orden->created_at->format('d/m/Y') }}
 						</td>
-						<td>{{ $orden->cliente->nombre }} {{ $orden->cliente->ap_paterno }} {{ $orden->cliente->ap_materno }}</td>
+
 						@auth
 						<td>
 							<a class="btn btn-outline-primary" href="{{ route('ordenes.edit', $orden->id) }}">Editar</a>

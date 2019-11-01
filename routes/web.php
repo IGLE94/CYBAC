@@ -20,7 +20,7 @@ Route::view('/', 'home')->name('home');
 Route::resource('ordenes', 'OrdenController');
 Route::resource('clientes', 'ClientesController');
 Route::resource('servicios', 'ServicioController')->except('show');
-
+Route::resource('equipos', 'EquiposController')->except('show');
 
 Auth::routes();
 // ['register' => false]
