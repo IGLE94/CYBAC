@@ -70,7 +70,7 @@
 
 				<div class="form-group">
 				<label for="telefono">Tel. Celular:</label>
-				<input class="form-control bg-light shadow-sm @error('telefono') @else border-0 @enderror" 
+				<input class="form-control bg-light shadow-sm @error('telefono') is-invalid @else border-0 @enderror" 
 					id="telefono" 
 					type="number" 
 					name="telefono">

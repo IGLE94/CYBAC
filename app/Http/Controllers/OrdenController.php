@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Equipo;
-use App\Http\Requests\CreateOrderRequest;
+use App\Http\Requests\SaveOrderRequest;
 use App\Order;
 use App\Servicio;
 use Carbon\Carbon;
@@ -50,7 +50,7 @@ class OrdenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateOrderRequest $request)
+    public function store(SaveOrderRequest $request)
     {
         // Guardar la  Orden 
         // DB::table('orders')->insert([
@@ -93,8 +93,11 @@ class OrdenController extends Controller
     {
         // $order = DB::table('orders')->where('id', $id)->first();
         $order = Order::findOrFail($id);
+        $servicios = Servicio::pluck('servicio', 'id');
+        $clientes = Cliente::pluck('nombre', 'id');
+        $equipos = Equipo::pluck('modelo', 'id');
 
-        return view('orders.edit', compact('order'));
+        return view('orders.edit', compact('order', 'servicios', 'clientes', 'equipos'));
     }
 
     /**
@@ -104,15 +107,35 @@ class OrdenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SaveOrderRequest $request, $id)
     {
         //Actualizamos 
         // DB::table('orders')->where('id', $id)->update([
         //     "tipoServicio" => $request->input('tipoServicio'),    
         //     "updated_at" => Carbon::now(),   
         // ]);
-        Order::findOrFail($id)->update($request->all());
+        // $orden = Order::findOrFail($id)->servicio()->associate(request('servicio'))->save();
+        // $orden = Order::findOrFail($id)->cliente()->associate(request('cliente'))->save();
+        // $orden = Order::findOrFail($id)->equipo()->associate(request('equipo'))->save();
 
+        $orden = Order::findOrFail($id);
+        $orden->update($request->all());
+        $orden->servicio()->associate(request('servicio'));
+        $orden->cliente()->associate(request('cliente'));
+        $orden->equipo()->associate(request('equipo'));
+        $orden->save();
+
+        // $orden = Order::findOrFail($id);
+        // $orden->cliente()->dissociate();
+        // $orden->save();
+        
+
+        // $orden = Order::findOrFail($id)->update([
+        //     'servicio_id' => $request->input('servicio'),
+        //     'cliente_id' => $request->input('cliente'),
+        //     'equipo_id' => $request->input('equipo'),
+        // ]);
+        
         // Redireccionamos
         return redirect()->route('ordenes.index');
     }

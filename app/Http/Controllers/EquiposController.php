@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Equipo;
-use App\Http\Requests\CreateEquipoRequest;
+use App\Http\Requests\SaveEquipoRequest;
 use Illuminate\Http\Request;
 
 class EquiposController extends Controller
@@ -36,7 +36,7 @@ class EquiposController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateEquipoRequest $request)
+    public function store(SaveEquipoRequest $request)
     {
         Equipo::create($request->all());
 
@@ -74,7 +74,7 @@ class EquiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateEquipoRequest $request, $id)
+    public function update(SaveEquipoRequest $request, $id)
     {
         Equipo::findOrFail($id)->update($request->all());
 

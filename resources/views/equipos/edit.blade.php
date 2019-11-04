@@ -15,6 +15,7 @@
 				<h4 align="center"><b>Editar Equipo:</b></h4>
 				<hr>
 
+				<div class="form-group">
 				<label for="equipo">Tipo de Equipo:</label>
 				<input class="form-control @error('equipo') is-invalid @else border-0 @enderror" 
 					id="equipo" 
@@ -26,7 +27,9 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
+
+				<div class="form-group">
 				<label for="marca">Marca:</label>
 				<input class="form-control @error('marca') is-invalid @else border-0 @enderror" 
 					id="marca" 
@@ -38,7 +41,9 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
+
+				<div class="form-group">
 				<label for="modelo">Modelo:</label>
 				<input class="form-control @error('modelo') is-invalid @else border-0 @enderror" 
 					id="modelo" 
@@ -50,7 +55,9 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
+
+				<div class="form-group">
 				<label for="serie">Numero de Serie:</label>
 				<input class="form-control @error('serie') is-invalid @else border-0 @enderror" 
 					id="serie" 
@@ -62,7 +69,8 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-
+				</div>
+				
 				<button class="btn btn-primary btn-lg btn-block">Agregar</button>
 				<a class="btn btn-outline-danger btn-block" href="{{ route('equipos.index') }}">Cancelar</a>
 			</form>

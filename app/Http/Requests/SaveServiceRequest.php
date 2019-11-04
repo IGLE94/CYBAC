@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateEquipoRequest extends FormRequest
+class SaveServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class CreateEquipoRequest extends FormRequest
     public function rules()
     {
         return [
-            'equipo' => 'required',
-            'marca' => 'required',
-            'modelo' => 'required',
-            'serie' => 'required'
+            'servicio' => 'required'
         ];
     }
 }

@@ -14,6 +14,7 @@
 				<h1 class="display-5"><b>Editar cliente: {{ $cliente->nombre }}</b></h1>
 				<hr>
 
+				<div class="form-group">
 				<label for="nombre">Nombre del Cliente:</label>
 				<input class="form-control bg-light shadow-sm @error('nombre') is-invalid @else border-0 @enderror" 
 					id="nombre" 
@@ -24,7 +25,9 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
+
+				<div class="form-group">
 				<label for="paterno">Apellido Paterno:</label>
 				<input class="form-control bg-light shadow-sm @error('paterno') is-invalid @else border-0 @enderror" 
 					id="paterno" 
@@ -35,8 +38,9 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
 
+				<div class="form-group">
 				<label for="materno">Apellido Materno:</label>
 				<input class="form-control bg-light shadow-sm @error('materno') is-invalid @else border-0 @enderror" 
 					id="materno" 
@@ -47,8 +51,9 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
 
+				<div class="form-group">
 				<label for="email">Email:</label>
 				<input class="form-control bg-light shadow-sm @error('email') is-invalid @else border-0 @enderror" 
 					id="email" 
@@ -60,8 +65,9 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
 
+				<div class="form-group">
 				<label for="telefono">Tel. Celular:</label>
 				<input class="form-control bg-light shadow-sm @error('telefono') is-invalid @else border-0 @enderror" 
 					id="telefono" 
@@ -73,10 +79,10 @@
 						<strong>{{ $message }}</strong>
 					</span>
 				@enderror
-				<br>
+				</div>
 
-				<button>Agregar</button>
-				<a href="{{ route('clientes.index') }}">Cancelar</a>
+				<button class="btn btn-primary btn-lg btn-block">Actualizar</button>
+				<a class="btn btn-outline-danger btn-block" href="{{ route('clientes.index') }}">Cancelar</a>
 			</form>
 
 		</div>

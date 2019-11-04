@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateServiceRequest;
-// use App\Http\Requests\UpdateServiceRequest;
+use App\Http\Requests\SaveServiceRequest;
 use App\Servicio;
 use Illuminate\Http\Request;
 
@@ -37,7 +36,7 @@ class ServicioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateServiceRequest $request)
+    public function store(SaveServiceRequest $request)
     {
         Servicio::create($request->all());
 
@@ -75,7 +74,7 @@ class ServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateServiceRequest $request, $id)
+    public function update(SaveServiceRequest $request, $id)
     {
         Servicio::findOrFail($id)->update($request->all());
 

@@ -25,11 +25,15 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link {{ setActive('ordenTerminada') }}" href="#">Ordenes Terminadas</a>
+					<a class="nav-link {{ setActive('clientes.index') }}" href="{{ route('clientes.index') }}">Clientes</a>
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link {{ setActive('ordenPendiente') }}" href="#">Ordenes Pendientes</a>
+					<a class="nav-link {{ setActive('servicios.index') }}" href="{{ route('servicios.index') }}">Servicios</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link {{ setActive('equipos.index') }}" href="{{ route('equipos.index') }}">Equipos</a>
 				</li>
 
 				@auth
