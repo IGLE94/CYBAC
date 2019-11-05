@@ -21,6 +21,7 @@ Route::resource('ordenes', 'OrdenController');
 Route::resource('clientes', 'ClientesController');
 Route::resource('servicios', 'ServicioController')->except('show');
 Route::resource('equipos', 'EquiposController')->except('show');
+Route::get('downloadPDF/{id}/download', 'DownloadPDFController@downloadPDF')->name('downloadPDF');
 
 Auth::routes();
 // ['register' => false]

@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Equipo;
 use App\Http\Requests\SaveOrderRequest;
+use App\Mail\MessageReceived;
 use App\Order;
 use App\Servicio;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrdenController extends Controller
 {
@@ -65,6 +67,10 @@ class OrdenController extends Controller
         $orden->equipo_id = $request->input('equipo');
         $orden->save();
 
+        Mail::to('contacto.igle@gmail.com')->queue(new MessageReceived($orden));
+
+        // return 'Mensaje Enviado';
+        
         // Redireccionar la Orden
         return redirect()->route('ordenes.index');
     }
