@@ -9,13 +9,25 @@
 <body>
 <div class="container">
 		<div class="bg-white p-5 shadow rounded">
-			
-			<h1>Orden  número: {{ $order->id }}</h1>
-			
+
+			<p><center><strong>Grupo CYBAC</strong></center></p>
+			<br>
 			<table class="table">
+				<tr>
+					<th>Número de orden:</th>
+					<td>{{ $order->id }}</td>	
+				</tr>
 				<tr>
 					<th>Cliente:</th>
 					<td>{{ $order->cliente->nombre }} {{ $order->cliente->paterno}} {{ $order->cliente->materno}}</td>
+				</tr>
+				<tr>
+					<th>Tel. Celular:</th>
+					<td>{{ $order->cliente->telefono }}</td>
+				</tr>
+				<tr>
+					<th>Email:</th>
+					<td>{{ $order->cliente->email }}</td>
 				</tr>
 				<tr>
 					<th>Tipo de servicio:</th>

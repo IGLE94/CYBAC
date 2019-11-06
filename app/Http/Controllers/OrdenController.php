@@ -67,7 +67,7 @@ class OrdenController extends Controller
         $orden->equipo_id = $request->input('equipo');
         $orden->save();
 
-        Mail::to('contacto.igle@gmail.com')->queue(new MessageReceived($orden));
+        Mail::to($orden->cliente->email)->queue(new MessageReceived($orden));
 
         // return 'Mensaje Enviado';
         
