@@ -8,6 +8,11 @@ class Order extends Model
 {
     protected $fillable = ['descripcion', 'costoServicio'];
 
+    public function getRouteKeyName()
+    {
+        return 'descripcion';
+    }
+
     public function cliente()
     {
     	return $this->belongsTo(Cliente::class);

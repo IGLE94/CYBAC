@@ -40,7 +40,7 @@ class ServicioController extends Controller
     {
         Servicio::create($request->all());
 
-        return redirect()->route('servicios.index');
+        return redirect()->route('ordenes.create');
     }
 
     /**

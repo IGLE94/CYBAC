@@ -81,7 +81,7 @@ class ClientesController extends Controller
     {
         Cliente::findOrFail($id)->update($request->all());
 
-        return redirect()->route('clientes.index');
+        return redirect()->route('ordenes.index');
     }
 
     /**

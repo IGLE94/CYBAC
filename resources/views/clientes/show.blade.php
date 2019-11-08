@@ -9,7 +9,8 @@
 			<a class="btn btn-primary" href="{{ route('clientes.edit', $cliente->id) }}">Editar Cliente</a>
 		</div>
 
-		<table class="table">
+		<div class="table-responsive">
+			<table class="table">
 			<tr>
 				<th>Nombre:</th>
 				<td>{{ $cliente->nombre }}</td>
@@ -30,7 +31,8 @@
 				<th>Tel. Celular:</th>
 				<td>{{ $cliente->telefono }}</td>
 			</tr>
-		</table>
+			</table>
+		</div>	
 		<a class="btn btn-success" href="{{ route('ordenes.index') }}">Regresar</a>
 	</div>
 </div>

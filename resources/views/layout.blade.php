@@ -13,7 +13,7 @@
 			@include('partials.nav')
 		</header>
 
-		<main>
+		<main class="py-4">
 			@yield('content')
 		</main>
 

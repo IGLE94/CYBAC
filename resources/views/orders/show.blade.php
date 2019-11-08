@@ -9,7 +9,8 @@
 				<a class="btn btn-primary" href="{{ route('downloadPDF', $order->id)}}">Download PDF</a>	
 			</div>
 			
-			<table class="table">
+			<div class="table-responsive">
+				<table class="table">
 				<tr>
 					<th>Cliente:</th>
 					<td>{{ $order->cliente->nombre }} {{ $order->cliente->paterno}} {{ $order->cliente->materno}}</td>
@@ -42,8 +43,8 @@
 					<th>Costo del Servicio:</th>
 					<td>${{ $order->costoServicio }}</td>
 				</tr>
-			</table>
-
+				</table>
+			</div>
 			{{-- <p class="lead">Enviado por: {{ $order->id }}</p> --}}
 			<p class="text-black-50">Tomada {{ $order->created_at->diffForHumans() }}</p>
 
@@ -52,7 +53,7 @@
 
 				@auth
 					<div class="btn-group btn-group-sm">
-						<a class="btn btn-info" href="{{ route('ordenes.edit', $order) }}">Editar</a>
+						<a class="btn btn-info" href="{{ route('ordenes.edit', $order->id) }}">Editar</a>
 
 						<a class="btn btn-danger" href="#" onclick="document.getElementById('delete-order').submit()">Eliminar</a>
 

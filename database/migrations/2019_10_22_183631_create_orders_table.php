@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('cliente_id')->nullable();
             $table->integer('servicio_id')->nullable();
             $table->integer('equipo_id')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
