@@ -17,7 +17,7 @@ Route::view('/', 'home')->name('home');
 // Route::put('orders/{id}', ['as' => 'orders.update', 'uses' => 'OrdenController@update']);
 // Route::delete('orders/{id}', ['as' => 'orders.destroy', 'uses' => 'OrdenController@destroy']);
 
-// Route::patch('ordenes/{id}/status', 'OrdenController@status')->name('ordenes.status');
+Route::patch('ordenes/{id}/status', 'OrdenController@status')->name('ordenes.status');
 
 Route::resource('ordenes', 'OrdenController');
 Route::resource('clientes', 'ClientesController')->except('destroy');

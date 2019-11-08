@@ -162,23 +162,24 @@ class OrdenController extends Controller
         return redirect()->route('ordenes.index');
     }
 
-    // public function status(Request $request, $id)
-    // {
-    //     $orden = Order::findOrFail($id);
+    public function status(Request $request, $id)
+    {
+        $orden = Order::findOrFail($id);
 
-    //     if($orden->status == false)
-    //     {
-    //         $orden->status = true;
-    //         $orden->update(request('status'));
+        if($orden->status == false)
+        {
+            $orden->status = true;
+            $orden->update(['status', $orden->status]);
 
-    //         return back();
-    //     }
-    //     else
-    //     {
-    //         $orden->status = false;
-    //         $orden->update(request('status'));
+            return back();
+        }
+        else
+        {
+            $orden->status = false;
+            // $orden->update(request('status'));
+            $orden->update(['status', $orden->status]);
 
-    //         return back();
-    //     }
-    // }
+            return back();
+        }
+    }
 }

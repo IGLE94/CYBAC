@@ -20,7 +20,7 @@
 						<th>Tipo de Servicio</th>
 						<th>Descripción</th>
 						<th>Cliente</th>
-						{{-- <th>Status</th> --}}
+						<th>Status</th>
 						<th>Fecha de Recepción</th>
 						@auth
 							<th>Acciones</th>
@@ -56,27 +56,30 @@
 									<td></td>
 								@endif
 
-								{{-- <td>{{ $orden->status == false ? 'pendiente' : 'Completa'}}</td> --}}
+								<td>{{ $orden->status == false ? 'Pendiente' : 'Completa' }}</td>
 								<td>{{ $orden->created_at->format('d/m/Y') }}</td>
 
 								@auth
 									<td>
 										<div class="btn-group">
 											<a class="btn btn-outline-primary" href="{{ route('ordenes.edit', $orden->id) }}">Editar</a>
+
+											<a class="btn btn-outline-success" href="#" onclick="document.getElementById('change-status').submit()">{{ $orden->status == true ? 'Pendiente' : 'Completa' }}</a>
+
 											<a class="btn btn-outline-danger" href="#" onclick="document.getElementById('delete-project').submit()">Eliminar</a>
 										</div>
+
+										<form id="change-status" method="POST" action="{{ route('ordenes.status', $orden->id) }}">	
+											@method('PATCH')
+											@csrf
+										</form>
+
 										<form id="delete-project" class="d-none" {{-- style="display:inline" --}} method="POST" action="{{ route('ordenes.destroy', $orden->id) }}">
 										@method('DELETE')	
 										@csrf	
 										</form>
+
 									</td>
-									{{-- <td>
-										<form method="POST" action="{{ route('ordenes.status', $orden->id) }}">	
-											@method('PATCH')
-											@csrf
-											<button class="btn btn-outline-success" type="submit">{{ $orden->status == true ? 'pendiente' : 'completa' }}</button>	
-										</form>
-									</td> --}}
 								@endauth
 						</tr>
 					@endforeach

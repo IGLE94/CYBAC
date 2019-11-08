@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="bg-white p-5 shadow rounded">
 			<div class="d-flex justify-content-between align-items-center mb-3">
-				<h1>Orden  número: {{ $order->id }}</h1>
+				<h1>Orden  número: {{ $order->id }} {{  $order->status == false ? 'Pendiente' : 'Completa' }}</h1>
 
 				<a class="btn btn-primary" href="{{ route('downloadPDF', $order->id)}}">Download PDF</a>	
 			</div>
