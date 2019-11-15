@@ -3,7 +3,7 @@
 	<div class="container">
 
 		<a class="navbar-brand" href="{{ route('home') }}">
-			{{ config('app.name') }}
+			{{-- {{ config('app.name') }} --}} <img class="img-fluid logo" src="/img/logo.png" alt="logo">
 		</a>
 
 		<button class="navbar-toggler" type="button" 
@@ -37,6 +37,16 @@
 				</li>
 
 				@auth
+					@if( auth()->user()->isAdmin() )
+						<li class="nav-item">
+							<a class="nav-link {{ setActive('usuarios.index') }}" href="{{ route('usuarios.index') }}">Usuarios</a>
+						</li>
+					@endif	
+
+					<li class="nav-item">
+						<a class="nav-link" href="/usuarios/{{ auth()->id() }}/editar">Mi cuenta</a>
+					</li>
+
 					<li class="nav-item">
 						<a class="nav-link" href="#" onclick="event.preventDefault();
 		                    document.getElementById('logout-form').submit();">Cerrar Sesión</a>

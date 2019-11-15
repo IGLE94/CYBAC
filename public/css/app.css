@@ -11262,3 +11262,12 @@ a.text-dark:focus {
   height: 100vh;
 }
 
+.logo {
+  width: 125px;
+}
+
+.error {
+  color: #E3342F;
+  font-size: smaller;
+}
+

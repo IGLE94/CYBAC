@@ -26,4 +26,5 @@ class Order extends Model
     public function equipo(){
     	return $this->belongsTo(Equipo::class);
     }
+
 }

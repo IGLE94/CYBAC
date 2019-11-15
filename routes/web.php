@@ -28,3 +28,6 @@ Route::get('downloadPDF/{id}/download', 'DownloadPDFController@downloadPDF')->na
 Auth::routes();
 // ['register' => false]
 
+
+// Rutas para el proyecto 2
+Route::resource('usuarios', 'UsuariosController');

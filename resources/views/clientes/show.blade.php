@@ -6,7 +6,10 @@
 
 		<div class="d-flex justify-content-between align-items-center mb-3">
 			<h1>Información del Cliente</h1>
+			
+			@auth
 			<a class="btn btn-primary" href="{{ route('clientes.edit', $cliente->id) }}">Editar Cliente</a>
+			@endauth
 		</div>
 
 		<div class="table-responsive">

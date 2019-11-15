@@ -6,6 +6,7 @@ use App\Cliente;
 use App\Equipo;
 use App\Http\Requests\SaveOrderRequest;
 use App\Mail\MessageReceived;
+use App\Mail\MessageSent;
 use App\Order;
 use App\Servicio;
 use Carbon\Carbon;
@@ -165,19 +166,22 @@ class OrdenController extends Controller
     public function status(Request $request, $id)
     {
         $orden = Order::findOrFail($id);
-
+        
         if($orden->status == false)
         {
             $orden->status = true;
-            $orden->update(['status', $orden->status]);
+            $orden->update(['status' => $orden->status]);
+
+            Mail::to($orden->cliente->email)->queue(new MessageSent($orden));
 
             return back();
         }
         else
         {
             $orden->status = false;
-            // $orden->update(request('status'));
-            $orden->update(['status', $orden->status]);
+            $orden->update(['status' => $orden->status]);
+
+            Mail::to($orden->cliente->email)->queue(new MessageSent($orden));
 
             return back();
         }
