@@ -6,11 +6,11 @@
 	<div class="container">
 		<div class="bg-white p-5 shadow rounded">
 			<div class="row">
-				<div class="col-12">	
-					<div class="d-flex justify-content-between align-items-center mb-3">
-						<h1 class="display-4">Clientes</h1>
-					</div>
-				</div>	
+				{{-- <div class="col-12">	 --}}
+					{{-- <div class="d-flex justify-content-between align-items-center mb-3"> --}}
+				<h1 class="display-4">Clientes</h1>
+					{{-- </div> --}}
+				{{-- </div>	 --}}
 				<div class="table-responsive">	
 					<table class="table table-hover">
 						<thead>

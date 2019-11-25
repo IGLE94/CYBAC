@@ -25,9 +25,21 @@ Route::resource('servicios', 'ServicioController')->except('show', 'destroy');
 Route::resource('equipos', 'EquiposController')->except('show', 'destroy');
 Route::get('downloadPDF/{id}/download', 'DownloadPDFController@downloadPDF')->name('downloadPDF');
 
-Auth::routes();
-// ['register' => false]
+Auth::routes(['register' => false]);
+
 
 
 // Rutas para el proyecto 2
-Route::resource('usuarios', 'UsuariosController');
+Route::resource('usuarios', 'UsuariosController')->except('destroy');
+Route::resource('empresas', 'EmpresasController')->except('destroy');
+Route::get('proyectos', 'DownloadPDFController@index')->name('proyectos');
+Route::resource('disenos', 'DisenosController')->except('destroy');
+Route::resource('desarrollos', 'DesarrollosController')->except('destroy');
+
+
+
+
+
+
+
+

@@ -41,6 +41,10 @@
 						<li class="nav-item">
 							<a class="nav-link {{ setActive('usuarios.index') }}" href="{{ route('usuarios.index') }}">Usuarios</a>
 						</li>
+
+						<li class="nav-item">
+							<a class="nav-link {{ setActive('proyectos') }}" href="{{ route('proyectos') }}">Proyectos</a>
+						</li>
 					@endif	
 
 					<li class="nav-item">

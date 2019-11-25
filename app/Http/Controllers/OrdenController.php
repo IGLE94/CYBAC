@@ -18,7 +18,7 @@ class OrdenController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -42,7 +42,7 @@ class OrdenController extends Controller
     {
         $servicios = Servicio::pluck('servicio', 'id');
         $clientes = Cliente::pluck('nombre', 'id');
-        $equipos = Equipo::pluck('modelo', 'id');
+        $equipos = Equipo::pluck('serie', 'id');
 
         return view('orders.create', compact('servicios', 'clientes', 'equipos'));
     }
@@ -102,7 +102,7 @@ class OrdenController extends Controller
         $order = Order::findOrFail($id);
         $servicios = Servicio::pluck('servicio', 'id');
         $clientes = Cliente::pluck('nombre', 'id');
-        $equipos = Equipo::pluck('modelo', 'id');
+        $equipos = Equipo::pluck('serie', 'id');
 
         return view('orders.edit', compact('order', 'servicios', 'clientes', 'equipos'));
     }

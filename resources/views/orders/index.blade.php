@@ -18,7 +18,7 @@
 					<tr>
 						<th>Orden</th>
 						<th>Tipo de Servicio</th>
-						<th>Descripción</th>
+						{{-- <th>Descripción</th> --}}
 						<th>Cliente</th>
 						<th>Status</th>
 						<th>Fecha de Recepción</th>
@@ -45,7 +45,7 @@
 								<td></td>
 							@endif	
 
-							<td>{{ $orden->descripcion }}</td>
+							{{-- <td>{{ $orden->descripcion }}</td> --}}
 									
 							@if($orden->cliente_id)
 								<td>
