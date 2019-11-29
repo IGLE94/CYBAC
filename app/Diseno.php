@@ -12,4 +12,9 @@ class Diseno extends Model
     {
     	return $this->belongsTo(Empresa::class);
     }
+
+    public function users()
+    {
+    	return $this->belongsToMany(User::class, 'assigned_disenos');
+    }
 }

@@ -19,7 +19,7 @@
 							<select class="custom-select bg-light shadow-sm @error('servicio') is-invalid @else border-0 @enderror" 
 								id="servicio" 
 								name="servicio">
-									<option selected disabled="">Tipo de Servicio</option>
+									<option selected disabled>Tipo de Servicio</option>
 									@foreach($servicios as $id => $servicio)
 										<option value="{{ $id }}">{{ $servicio }}</option>
 									@endforeach

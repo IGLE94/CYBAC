@@ -24,7 +24,8 @@ class SaveDesarrolloRequest extends FormRequest
     public function rules()
     {
         return [
-            'requerimiento' => 'required'
+            'requerimiento' => 'required',
+            'empresa' => 'required'
         ];
     }
 }

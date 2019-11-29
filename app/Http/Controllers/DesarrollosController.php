@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Desarrollo;
+use App\Empresa;
 use App\Http\Requests\SaveDesarrolloRequest;
+use App\User;
 use Illuminate\Http\Request;
 
 class DesarrollosController extends Controller
@@ -27,7 +29,9 @@ class DesarrollosController extends Controller
      */
     public function create()
     {
-        return view('desarrollos.create');
+        $empresas = Empresa::pluck('nombre', 'id');
+
+        return view('desarrollos.create', compact('empresas'));
     }
 
     /**
@@ -38,7 +42,9 @@ class DesarrollosController extends Controller
      */
     public function store(SaveDesarrolloRequest $request)
     {
-        Desarrollo::create($request->all());
+        $proyecto = Desarrollo::create($request->all());
+        $proyecto->empresa_id = $request->input('empresa');
+        $proyecto->save();
 
         return redirect()->route('desarrollos.index');
     }
@@ -65,8 +71,9 @@ class DesarrollosController extends Controller
     public function edit($id)
     {
         $desarrollo = Desarrollo::findOrFail($id);
+        $empresas = Empresa::pluck('nombre', 'id');
 
-        return view('desarrollos.edit', compact('desarrollo'));
+        return view('desarrollos.edit', compact('desarrollo', 'empresas'));
     }
 
     /**
@@ -78,7 +85,10 @@ class DesarrollosController extends Controller
      */
     public function update(SaveDesarrolloRequest $request, $id)
     {
-        Desarrollo::findOrFail($id)->update($request->all());
+        $proyecto = Desarrollo::findOrFail($id);
+        $proyecto->update($request->all());
+        $proyecto->empresa()->associate(request('empresa'));
+        $proyecto->save();
 
         return redirect()->route('desarrollos.index');
     }

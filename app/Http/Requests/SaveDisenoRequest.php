@@ -24,6 +24,7 @@ class SaveDisenoRequest extends FormRequest
     public function rules()
     {
         return [
+            'empresa' => 'required',
             'requerimiento' => 'required'
         ];
     }

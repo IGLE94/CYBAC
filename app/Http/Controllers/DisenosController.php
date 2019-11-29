@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Diseno;
+use App\Empresa;
 use App\Http\Requests\SaveDisenoRequest;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,9 @@ class DisenosController extends Controller
      */
     public function create()
     {
-        return view('disenos.create');
+        $empresas = Empresa::pluck('nombre', 'id');
+
+        return view('disenos.create', compact('empresas'));
     }
 
     /**
@@ -38,7 +41,9 @@ class DisenosController extends Controller
      */
     public function store(SaveDisenoRequest $request)
     {
-        Diseno::create($request->all());
+        $proyecto = Diseno::create($request->all());
+        $proyecto->empresa_id = $request->input('empresa');
+        $proyecto->save();
 
         return redirect()->route('disenos.index');
     }
@@ -65,8 +70,9 @@ class DisenosController extends Controller
     public function edit($id)
     {
         $diseno = Diseno::findOrFail($id);
+        $empresas = Empresa::pluck('nombre', 'id');
 
-        return view('disenos.edit', compact('diseno'));
+        return view('disenos.edit', compact('diseno', 'empresas'));
     }
 
     /**
@@ -78,7 +84,11 @@ class DisenosController extends Controller
      */
     public function update(SaveDisenoRequest $request, $id)
     {
-        Diseno::findOrFail($id)->update($request->all());
+        $proyecto = Diseno::findOrFail($id);
+
+        $proyecto->update($request->all());
+        $proyecto->empresa()->associate(request('empresa'));
+        $proyecto->save();
 
         return redirect()->route('disenos.index');
     }

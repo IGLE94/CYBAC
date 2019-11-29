@@ -7,7 +7,7 @@
 	<div class="bg-white shadow rounded py-2 px-5">
 		@include('partials.navProjects')
 
-		<div class="d-flex justify-content-between align-items-center mb-3 py-5">
+		<div class="d-flex justify-content-between align-items-center py-4">
 			<h1 class="display-5">Empresas</h1>
 			@auth
 				<a class="btn btn-primary" href="{{ route('empresas.create') }}">Agregar Empresa</a>

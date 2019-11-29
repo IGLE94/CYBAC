@@ -19,7 +19,6 @@
 								<th>Nombre</th>
 								<th>Email</th>
 								<th>Role</th>
-								<th>Descripción</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -31,9 +30,6 @@
 								<td>{{ $usuario->email }}</td>
 								<td>
 									{{ $usuario->roles->pluck('display_name')->implode(', ') }}
-								</td>
-								<td>
-									{{ $usuario->roles->pluck('description')->implode('') }}
 								</td>
 								<td>
 									<a class="btn btn-outline-primary" href="{{ route('usuarios.edit', $usuario->id ) }}">Editar</a>

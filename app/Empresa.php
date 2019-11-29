@@ -12,4 +12,9 @@ class Empresa extends Model
     {
     	return $this->hasMany(Diseno::class);
     }
+
+    public function desarrollos()
+    {
+    	return $this->hasMany(Desarrollo::class);
+    }
 }

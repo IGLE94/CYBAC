@@ -2,11 +2,21 @@
 
 <hr>
 <div class="form-group">
-	<label for="empresa">Empresa:</label>
-	<input 
+	<label class="mb-0" for="empresa">Empresas:</label>
+	<select class="custom-select bg-light shadow-sm @error('empresa') is-invalid @else border-0 @enderror" 
 		id="empresa" 
-		type="text" 
 		name="empresa">
+		<option selected disabled>Elija la Empresa</option>
+		@foreach($empresas as $id => $empresa)
+			<option value="{{ $id }}">{{ $empresa }}</option>
+		@endforeach
+	</select>
+
+	@error('empresa')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+	@enderror
 </div>
 
 <div class="form-group">

@@ -36,6 +36,11 @@ Route::get('proyectos', 'DownloadPDFController@index')->name('proyectos');
 Route::resource('disenos', 'DisenosController')->except('destroy');
 Route::resource('desarrollos', 'DesarrollosController')->except('destroy');
 
+Route::get('assignDisenos/{id}/asignar', 'ProjectsDisController@assignDisenos')->name('assignDisenos');
+Route::put('assignUser/{id}', 'ProjectsDisController@assignUser')->name('assignUser');
+
+Route::get('assignDesarrollos/{id}/asignar', 'ProjectsDesController@assignDesarrollos')->name('assignDesarrollos');
+Route::put('assignUserDesarrollo/{id}', 'ProjectsDesController@assignUserDesarrollo')->name('assignUserDesarrollo');
 
 
 
