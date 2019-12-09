@@ -18,10 +18,11 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Requerimiento</th>
+						<th>Título</th>
 						<th>Empresa</th>
 						<th>Usuarios</th>
+						<th><a class="btn btn-success" href="{{ route('categorias.index') }}">Categorias</a></th>
+						<th>Actividades</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -29,14 +30,16 @@
 					@foreach($disenos as $diseno)
 					<tr>
 						<td>
-							<a class="btn btn-outline-info btn-sm" href="{{ route('disenos.show', $diseno->id) }}">{{ $diseno->id }}</a>
+							<a class="btn btn-outline-info btn-sm" href="{{ route('disenos.show', $diseno->id) }}">{{ $diseno->titulo }}</a>
 						</td>
-						<td>{{ $diseno->requerimiento }}</td>
 						<td>{{ $diseno->empresa->nombre }}</td>
 						<td>{{ $diseno->users->pluck('name')->implode(', ') }}</td>
+						<td>{{ $diseno->categoria->categoria }}</td>
+						<td>{{ $diseno->actividades->pluck('actividad')->implode(', ') }}</td>
 						<td>
 							<a class="btn btn-outline-primary" href="{{ route('disenos.edit', $diseno->id) }}">Editar</a>
 							<a class="btn btn-info" href="{{ route('assignDisenos', $diseno->id) }}">Asignar</a>
+							<a class="btn btn-dark" href="{{ route('actividades.create', $diseno->id) }}">Crear Actividades</a>
 						</td>
 					</tr>
 					@endforeach

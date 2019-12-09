@@ -15,6 +15,6 @@ class Desarrollo extends Model
 
     public function users()
     {
-    	return $this->belongsToMany(User::class, 'assigned_desarrollos');
+    	return $this->belongsToMany(User::class, 'assigned_desarrollos')->withTimestamps();
     }
 }

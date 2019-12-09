@@ -16,9 +16,4 @@ class DownloadPDFController extends Controller
 
     	return $pdf->stream();
     }
-
-    public function index()
-    {
-    	return view('proyectos.index');
-    }
 }

@@ -44,17 +44,17 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'assigned_roles');
+        return $this->belongsToMany(Role::class, 'assigned_roles')->withTimestamps();
     }
 
     public function disenos()
     {
-    	return $this->belongsToMany(Diseno::class, 'assigned_disenos');
+    	return $this->belongsToMany(Diseno::class, 'assigned_disenos')->withTimestamps();
     }
 
     public function desarrollos()
     {
-        return $this->belongsToMany(Desarrollo::class, 'assigned_desarrollos');
+        return $this->belongsToMany(Desarrollo::class, 'assigned_desarrollos')->withTimestamps();
     }
 
     public function hasRoles(array $roles)

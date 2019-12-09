@@ -20,16 +20,54 @@
 </div>
 
 <div class="form-group">
-	<label for="requerimiento">Requerimiento 1:</label>
-	<input class="form-control bg-light shadow-sm @error('requerimiento') is-invalid @else border-0 @enderror"
-	 	id="requerimiento" 
+	<label for="titulo">Título del Proyecto:</label>
+	<input class="form-control bg-light shadow-sm @error('titulo') is-invalid @else border-0 @enderror"
+	 	id="titulo" 
 		type="text" 
-		name="requerimiento" 
-		value="{{ $diseno->requerimiento ?? old('requerimiento') }}">
+		name="titulo" 
+		value="{{ $diseno->titulo ?? old('titulo') }}">
 
-	@error('requerimiento')
+	@error('titulo')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
 		</span>
 	@enderror	
 </div>
+
+<div class="form-group">
+	<div class="d-flex justify-content-between align-items-center mb-1">
+		<label class="mb-0" for="categoria">Categorias:</label>
+		<a class="btn btn-primary btn-sm" href="{{ route('categorias.create') }}">ADD Categoria</a>
+	</div>
+	<select class="custom-select bg-light shadow-sm @error('categoria') is-invalid @else border-0 @enderror" 
+		id="categoria" 
+		name="categoria">
+		<option selected disabled>Elija la categoria</option>
+		@foreach($categorias as $id => $categoria)
+			<option value="{{ $id }}">{{ $categoria }}</option>
+		@endforeach
+	</select>
+
+	@error('categoria')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+	@enderror
+</div>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

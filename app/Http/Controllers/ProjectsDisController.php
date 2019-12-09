@@ -28,4 +28,11 @@ class ProjectsDisController extends Controller
 
         return redirect()->route('disenos.index');
     }
+
+    public function assignProjectDis($id)
+    {
+        $usuario = User::findOrFail($id);
+
+        return view('disenos.assignProjectDis', compact('usuario'));
+    }
 }

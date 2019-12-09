@@ -28,4 +28,11 @@ class ProjectsDesController extends Controller
 
         return redirect()->route('desarrollos.index');
     }
+
+    public function assignProjectDes($id)
+    {
+        $usuario = User::findOrFail($id);
+
+        return view('desarrollos.assignProjectDes', compact('usuario'));
+    }
 }

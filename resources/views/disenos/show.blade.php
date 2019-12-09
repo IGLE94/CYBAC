@@ -18,8 +18,8 @@
 					<td>{{ $diseno->id }}</td>
 				</tr>
 				<tr>
-					<th>Requerimiento:</th>
-					<td>{{ $diseno->requerimiento }}</td>
+					<th>Título:</th>
+					<td>{{ $diseno->titulo }}</td>
 				</tr>
 			</table>
 		</div>

@@ -18,22 +18,17 @@
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="nav nav-pills">
 
-				<li class="nav-item">
-					<a class="nav-link {{ setActive('ordenes.index') }}" href="{{ route('ordenes.index') }}">
-						Ordenes
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Agregar Orden
 					</a>
-				</li>
 
-				<li class="nav-item">
-					<a class="nav-link {{ setActive('clientes.index') }}" href="{{ route('clientes.index') }}">Clientes</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link {{ setActive('servicios.index') }}" href="{{ route('servicios.index') }}">Servicios</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link {{ setActive('equipos.index') }}" href="{{ route('equipos.index') }}">Equipos</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item {{ setActive('ordenes.index') }}" href="{{ route('ordenes.index') }}">Ordenes</a>
+						<a class="dropdown-item {{ setActive('clientes.index') }}" href="{{ route('clientes.index') }}">Clientes</a>
+						<a class="dropdown-item {{ setActive('servicios.index') }}" href="{{ route('servicios.index') }}">Servicios</a>
+						<a class="dropdown-item {{ setActive('equipos.index') }}" href="{{ route('equipos.index') }}">Equipos</a>
+					</div>
 				</li>
 
 				@auth
@@ -43,18 +38,31 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link {{ setActive('proyectos') }}" href="{{ route('proyectos') }}">Proyectos</a>
+							<a class="nav-link {{ setActive('empresas.index') }}" href="{{ route('empresas.index') }}">Agregar Proyecto</a>
 						</li>
-					@endif	
+					@endif
 
-					<li class="nav-item">
-						<a class="nav-link" href="/usuarios/{{ auth()->id() }}/editar">Mi cuenta</a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTwo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proyectos Asignados</a>
+
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownTwo">
+							<a class="dropdown-item {{ setActive('assignProjectDis') }}" href="{{ route('assignProjectDis', auth()->id() ) }}">Proyectos Diseño Asignados</a>
+							<a class="dropdown-item {{ setActive('assignProjectDes') }}" href="{{ route('assignProjectDes', auth()->id() ) }}">Proyectos Desarrollo Asignados</a>
+						</div>
 					</li>
 
-					<li class="nav-item">
-						<a class="nav-link" href="#" onclick="event.preventDefault();
-		                    document.getElementById('logout-form').submit();">Cerrar Sesión</a>
-		            </li>
+	
+					{{-- <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownThree" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          					Mi cuenta
+        				</a>
+        				<div class="dropdown-menu" aria-labelledby="navbarDropdownThree">
+        					<a class="dropdown-item" href="/usuarios/{{ auth()->id() }}/editar">Mi Perfil</a>
+        					<a class="dropdown-item" href="#" onclick="event.preventDefault();
+		                    document.getElementById('logout-form').submit();">Cerrar Sesión de {{ auth()->user()->name }}</a>
+        				</div>
+					</li> --}}
+
 				@else
 					<li class="nav-item">
 						<a class="nav-link {{ setActive('login') }}" href="{{ route('login') }}">Login</a>
@@ -63,9 +71,23 @@
 
 			</ul>
 		</div>
-
+		@auth
+		<ul class="nav justify-content-end">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownThree" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          					{{ auth()->user()->name }}
+        		</a>
+        		
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdownThree">
+        			<a class="dropdown-item" href="/usuarios/{{ auth()->id() }}/editar">Mi Perfil</a>
+        			<a class="dropdown-item" href="#" onclick="event.preventDefault();
+		            document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+        		</div>
+			</li>
+		</ul>
+		@endauth
+		{{-- Aqui tiene que ir el DROPDOWN de MI CUENTA Y PERFIL --}}
 	</div>
-
 </nav>
 
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

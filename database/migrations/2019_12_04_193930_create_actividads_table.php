@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDisenosTable extends Migration
+class CreateActividadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateDisenosTable extends Migration
      */
     public function up()
     {
-        Schema::create('disenos', function (Blueprint $table) {
+        Schema::create('actividads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo');
-            $table->integer('empresa_id')->nullable();
-            $table->integer('categoria_id')->nullable();
+            $table->string('actividad');
+            $table->string('produccion')->nullable();
+            $table->string('revision')->nullable();
+            $table->string('finalizacion')->nullable();
+            $table->integer('diseno_id')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateDisenosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('disenos');
+        Schema::dropIfExists('actividads');
     }
 }

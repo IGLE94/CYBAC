@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use App\Diseno;
 use App\Empresa;
 use App\Http\Requests\SaveDisenoRequest;
@@ -29,8 +30,9 @@ class DisenosController extends Controller
     public function create()
     {
         $empresas = Empresa::pluck('nombre', 'id');
+        $categorias = Categoria::pluck('categoria', 'id');
 
-        return view('disenos.create', compact('empresas'));
+        return view('disenos.create', compact('empresas', 'categorias'));
     }
 
     /**
@@ -43,6 +45,7 @@ class DisenosController extends Controller
     {
         $proyecto = Diseno::create($request->all());
         $proyecto->empresa_id = $request->input('empresa');
+        $proyecto->categoria_id = $request->input('categoria');
         $proyecto->save();
 
         return redirect()->route('disenos.index');
@@ -71,8 +74,9 @@ class DisenosController extends Controller
     {
         $diseno = Diseno::findOrFail($id);
         $empresas = Empresa::pluck('nombre', 'id');
+        $categorias = Categoria::pluck('categoria', 'id');
 
-        return view('disenos.edit', compact('diseno', 'empresas'));
+        return view('disenos.edit', compact('diseno', 'empresas', 'categorias'));
     }
 
     /**
