@@ -7,9 +7,4 @@ use Illuminate\Database\Eloquent\Model;
 class Actividad extends Model
 {
     protected $fillable = ['actividad', 'produccion', 'revision', 'finalizacion'];
-
-    public function diseno()
-    {
-    	return $this->belongsTo(Diseno::class);
-    }
 }

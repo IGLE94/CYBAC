@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveDesarrolloRequest extends FormRequest
+class SaveTipoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class SaveDesarrolloRequest extends FormRequest
     public function rules()
     {
         return [
-            'requerimiento' => 'required',
-            'empresa' => 'required'
+            'tipo' => 'required'
         ];
     }
 }

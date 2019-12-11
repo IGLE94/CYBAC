@@ -32,16 +32,8 @@ Auth::routes(['register' => false]);
 // Rutas para el proyecto 2
 Route::resource('usuarios', 'UsuariosController')->except('destroy');
 Route::resource('empresas', 'EmpresasController')->except('destroy');
-Route::resource('disenos', 'DisenosController')->except('destroy');
-Route::resource('desarrollos', 'DesarrollosController')->except('destroy');
-
-Route::get('assignDisenos/{id}/asignar', 'ProjectsDisController@assignDisenos')->name('assignDisenos');
-Route::put('assignUser/{id}', 'ProjectsDisController@assignUser')->name('assignUser');
-Route::get('assignProjectDis/{id}', 'ProjectsDisController@assignProjectDis')->name('assignProjectDis');
-
-Route::get('assignDesarrollos/{id}/asignar', 'ProjectsDesController@assignDesarrollos')->name('assignDesarrollos');
-Route::put('assignUserDesarrollo/{id}', 'ProjectsDesController@assignUserDesarrollo')->name('assignUserDesarrollo');
-Route::get('assignProjectDes/{id}', 'ProjectsDesController@assignProjectDes')->name('assignProjectDes');
+Route::resource('proyectos', 'ProyectosController')->except('destroy');
+Route::resource('tipos', 'TiposController')->except('show', 'destroy');
 
 Route::resource('categorias', 'CategoriasController')->except('show', 'destroy');
 

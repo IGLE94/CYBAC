@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Desarrollo;
-use App\Empresa;
-use App\Http\Requests\SaveDesarrolloRequest;
-use App\User;
+use App\Tipo;
+use App\Http\Requests\SaveTipoRequest;
 use Illuminate\Http\Request;
 
-class DesarrollosController extends Controller
+class TiposController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,9 @@ class DesarrollosController extends Controller
      */
     public function index()
     {
-        $desarrollos = Desarrollo::all();
+        $tipos = Tipo::all();
 
-        return view('desarrollos.index', compact('desarrollos'));
+        return view('tipos.index', compact('tipos'));
     }
 
     /**
@@ -29,9 +27,7 @@ class DesarrollosController extends Controller
      */
     public function create()
     {
-        $empresas = Empresa::pluck('nombre', 'id');
-
-        return view('desarrollos.create', compact('empresas'));
+        return view('tipos.create');
     }
 
     /**
@@ -40,13 +36,11 @@ class DesarrollosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SaveDesarrolloRequest $request)
+    public function store(SaveTipoRequest $request)
     {
-        $proyecto = Desarrollo::create($request->all());
-        $proyecto->empresa_id = $request->input('empresa');
-        $proyecto->save();
+        Tipo::create($request->all());
 
-        return redirect()->route('desarrollos.index');
+        return redirect()->route('proyectos.create');
     }
 
     /**
@@ -57,9 +51,7 @@ class DesarrollosController extends Controller
      */
     public function show($id)
     {
-        $desarrollo = Desarrollo::findOrFail($id);
-
-        return view('desarrollos.show', compact('desarrollo'));
+        //
     }
 
     /**
@@ -70,10 +62,9 @@ class DesarrollosController extends Controller
      */
     public function edit($id)
     {
-        $desarrollo = Desarrollo::findOrFail($id);
-        $empresas = Empresa::pluck('nombre', 'id');
+        $tipo = Tipo::findOrFail($id);
 
-        return view('desarrollos.edit', compact('desarrollo', 'empresas'));
+        return view('tipos.edit', compact('tipo'));
     }
 
     /**
@@ -83,14 +74,11 @@ class DesarrollosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SaveDesarrolloRequest $request, $id)
+    public function update(SaveTipoRequest $request, $id)
     {
-        $proyecto = Desarrollo::findOrFail($id);
-        $proyecto->update($request->all());
-        $proyecto->empresa()->associate(request('empresa'));
-        $proyecto->save();
+        $tipo = Tipo::findOrFail($id)->update($request->all());
 
-        return redirect()->route('desarrollos.index');
+        return redirect()->route('tipos.index');
     }
 
     /**

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Empresa extends Model
+class Tipo extends Model
 {
-    protected $fillable = ['nombre', 'contacto', 'email', 'ubicacion', 'giro'];
+    protected $fillable = ['tipo'];
 
     public function proyectos()
     {

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Diseños')
+@section('title', 'Crear Tipo de Proyecto')
 
 @section('content')
 <div class="container">
@@ -9,14 +9,14 @@
 		
 			<form class="bg-white shadow rounded py-3 px-4"
 				method="POST"
-				action="{{ route('disenos.store') }}">
-				
-				<h1 class="display-5 text-center"><b>Agregar Proyecto de Diseño</b></h1>
+				action="{{ route('tipos.store') }}">
 
-				 @include('disenos.form', ['diseno' => new App\Diseno])
+				<h1 class="display-5 text-center"><b>Agregar Tipo de Proyecto</b></h1>
+
+				 @include('tipos.form', ['tipo' => new App\Tipo])
 
 				<button class="btn btn-primary btn-lg btn-block">Guardar</button>
-				<a class="btn btn-outline-danger btn-block" href="{{ route('disenos.index') }}">Regresar</a>
+				<a class="btn btn-outline-danger btn-block" href="{{ route('proyectos.create') }}">Regresar</a>
 			</form>
 
 		</div>

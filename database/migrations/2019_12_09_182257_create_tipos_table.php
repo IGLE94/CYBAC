@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAssignedDisenosTable extends Migration
+class CreateTiposTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAssignedDisenosTable extends Migration
      */
     public function up()
     {
-        Schema::create('assigned_disenos', function (Blueprint $table) {
-            $table->integer('diseno_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+        Schema::create('tipos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('tipo');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateAssignedDisenosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assigned_disenos');
+        Schema::dropIfExists('tipos');
     }
 }

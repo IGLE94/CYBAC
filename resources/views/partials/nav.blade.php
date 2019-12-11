@@ -42,13 +42,8 @@
 						</li>
 					@endif
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTwo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proyectos Asignados</a>
-
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownTwo">
-							<a class="dropdown-item {{ setActive('assignProjectDis') }}" href="{{ route('assignProjectDis', auth()->id() ) }}">Proyectos Diseño Asignados</a>
-							<a class="dropdown-item {{ setActive('assignProjectDes') }}" href="{{ route('assignProjectDes', auth()->id() ) }}">Proyectos Desarrollo Asignados</a>
-						</div>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Proyectos Asignados</a>
 					</li>
 
 	

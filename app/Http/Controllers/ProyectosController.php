@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Categoria;
-use App\Diseno;
+use App\Tipo;
 use App\Empresa;
-use App\Http\Requests\SaveDisenoRequest;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
-class DisenosController extends Controller
+class ProyectosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class DisenosController extends Controller
      */
     public function index()
     {
-        $disenos =  Diseno::all();
+        $proyectos = Proyecto::all();
 
-        return view('disenos.index', compact('disenos'));
+        return view('proyectos.index', compact('proyectos'));
     }
 
     /**
@@ -29,10 +28,10 @@ class DisenosController extends Controller
      */
     public function create()
     {
+        $proyectos = Tipo::pluck('tipo', 'id');
         $empresas = Empresa::pluck('nombre', 'id');
-        $categorias = Categoria::pluck('categoria', 'id');
 
-        return view('disenos.create', compact('empresas', 'categorias'));
+        return view('proyectos.create', compact('proyectos', 'empresas'));
     }
 
     /**
@@ -41,14 +40,14 @@ class DisenosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SaveDisenoRequest $request)
+    public function store(Request $request)
     {
-        $proyecto = Diseno::create($request->all());
+        $proyecto = Proyecto::create($request->all());
+        $proyecto->tipo_id = $request->input('proyecto');
         $proyecto->empresa_id = $request->input('empresa');
-        $proyecto->categoria_id = $request->input('categoria');
         $proyecto->save();
 
-        return redirect()->route('disenos.index');
+        return redirect()->route('proyectos.index');
     }
 
     /**
@@ -59,9 +58,7 @@ class DisenosController extends Controller
      */
     public function show($id)
     {
-        $diseno = Diseno::findOrFail($id);
-
-        return view('disenos.show', compact('diseno'));
+        //
     }
 
     /**
@@ -72,11 +69,7 @@ class DisenosController extends Controller
      */
     public function edit($id)
     {
-        $diseno = Diseno::findOrFail($id);
-        $empresas = Empresa::pluck('nombre', 'id');
-        $categorias = Categoria::pluck('categoria', 'id');
-
-        return view('disenos.edit', compact('diseno', 'empresas', 'categorias'));
+        //
     }
 
     /**
@@ -86,15 +79,9 @@ class DisenosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SaveDisenoRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $proyecto = Diseno::findOrFail($id);
-
-        $proyecto->update($request->all());
-        $proyecto->empresa()->associate(request('empresa'));
-        $proyecto->save();
-
-        return redirect()->route('disenos.index');
+        //
     }
 
     /**
