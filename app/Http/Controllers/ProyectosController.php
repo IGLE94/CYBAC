@@ -28,10 +28,10 @@ class ProyectosController extends Controller
      */
     public function create()
     {
-        $proyectos = Tipo::pluck('tipo', 'id');
+        $tipos = Tipo::pluck('tipo', 'id');
         $empresas = Empresa::pluck('nombre', 'id');
 
-        return view('proyectos.create', compact('proyectos', 'empresas'));
+        return view('proyectos.create', compact('tipos', 'empresas'));
     }
 
     /**
@@ -43,7 +43,7 @@ class ProyectosController extends Controller
     public function store(Request $request)
     {
         $proyecto = Proyecto::create($request->all());
-        $proyecto->tipo_id = $request->input('proyecto');
+        $proyecto->tipo_id = $request->input('tipo');
         $proyecto->empresa_id = $request->input('empresa');
         $proyecto->save();
 
@@ -69,7 +69,11 @@ class ProyectosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyecto = Proyecto::findOrFail($id);
+        $tipos = Tipo::pluck('tipo', 'id');
+        $empresas = Empresa::pluck('nombre', 'id');
+
+        return view('proyectos.edit', compact('proyecto', 'tipos', 'empresas'));
     }
 
     /**
@@ -81,7 +85,13 @@ class ProyectosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proyecto = Proyecto::findOrFail($id);
+        $proyecto->update($request->all());
+        $proyecto->tipo()->associate(request('tipo'));
+        $proyecto->empresa()->associate(request('empresa'));
+        $proyecto->save();
+
+        return redirect()->route('proyectos.index');
     }
 
     /**

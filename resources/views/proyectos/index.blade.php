@@ -19,6 +19,7 @@
 				<thead>
 					<tr>
 						<th>ID</th>
+						<th>Requerimiento</th>
 						<th><a class="btn btn-success" href="{{ route('tipos.index') }}">Tipo Proyecto</a></th>
 						<th>Empresa</th>
 						<th>Acciones</th>
@@ -28,8 +29,12 @@
 					@foreach($proyectos as $proyecto)
 					<tr>
 						<td>{{ $proyecto->id }}</td>
-						<td>{{ $proyecto->type }}</td>
+						<td>{{ $proyecto->requerimiento }}</td>
+						<td>{{ $proyecto->tipo->tipo }}</td>
 						<td>{{ $proyecto->empresa->nombre }}</td>
+						<td>
+							<a class="btn btn-outline-primary" href="{{ route('proyectos.edit', $proyecto->id) }}">Editar</a>
+						</td>
 					</tr>
 					@endforeach
 				</tbody>

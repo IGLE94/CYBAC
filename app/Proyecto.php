@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proyecto extends Model
 {
-    protected $fillable = ['tipo'];
+    protected $fillable = ['requerimiento'];
 
     public function empresa()
     {
     	return $this->belongsTo(Empresa::class);
     }
 
-    public function types()
+    public function tipo()
     {
     	return $this->belongsTo(Tipo::class);
     }

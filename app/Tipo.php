@@ -8,8 +8,8 @@ class Tipo extends Model
 {
     protected $fillable = ['tipo'];
 
-    public function proyectos()
+    public function proyecto()
     {
-    	return $this->hasMany(Proyecto::class);
+    	return $this->hasOne(Proyecto::class);
     }
 }
