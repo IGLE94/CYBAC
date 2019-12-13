@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Tipo;
 use App\Empresa;
 use App\Proyecto;
+use App\Tipo;
 use Illuminate\Http\Request;
 
 class ProyectosController extends Controller
@@ -104,4 +104,5 @@ class ProyectosController extends Controller
     {
         //
     }
+
 }

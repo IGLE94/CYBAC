@@ -30,10 +30,11 @@
 					<tr>
 						<td>{{ $proyecto->id }}</td>
 						<td>{{ $proyecto->requerimiento }}</td>
-						<td>{{ $proyecto->tipo->tipo }}</td>
-						<td>{{ $proyecto->empresa->nombre }}</td>
+						<td>{{ $proyecto->tipo['tipo'] }}</td>
+						<td>{{ $proyecto->empresa['nombre'] }}</td>
 						<td>
 							<a class="btn btn-outline-primary" href="{{ route('proyectos.edit', $proyecto->id) }}">Editar</a>
+							<a class="btn btn-info" href="{{ route('assignedProjects', $proyecto->id) }}">Asignar Proyecto</a>
 						</td>
 					</tr>
 					@endforeach

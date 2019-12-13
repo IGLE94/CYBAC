@@ -17,4 +17,9 @@ class Proyecto extends Model
     {
     	return $this->belongsTo(Tipo::class);
     }
+
+    public function users()
+    {
+    	return $this->belongsToMany(User::class, 'assigned_users')->withTimestamps();
+    }
 }

@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'assigned_roles')->withTimestamps();
     }
 
+    public function proyectos()
+    {
+        return $this->belongsToMany(Proyecto::class, 'assigned_users')->withTimestamps();
+    }
+
     public function hasRoles(array $roles)
     {
        return $this->roles->pluck('name')->intersect($roles)->count();
