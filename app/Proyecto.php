@@ -20,6 +20,6 @@ class Proyecto extends Model
 
     public function users()
     {
-    	return $this->belongsToMany(User::class, 'assigned_users')->withTimestamps();
+    	return $this->belongsToMany(User::class, 'assigned_projects')->withTimestamps();
     }
 }

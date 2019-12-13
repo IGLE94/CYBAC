@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function proyectos()
     {
-        return $this->belongsToMany(Proyecto::class, 'assigned_users')->withTimestamps();
+        return $this->belongsToMany(Proyecto::class, 'assigned_projects')->withTimestamps();
     }
 
     public function hasRoles(array $roles)

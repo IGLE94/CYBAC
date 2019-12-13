@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAssignedUsersTable extends Migration
+class CreateAssignedPojectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAssignedUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('assigned_users', function (Blueprint $table) {
+        Schema::create('assigned_projects', function (Blueprint $table) {
             $table->integer('proyecto_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateAssignedUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assigned_users');
+        Schema::dropIfExists('assigned_projects');
     }
 }

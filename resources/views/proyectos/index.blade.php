@@ -22,6 +22,7 @@
 						<th>Requerimiento</th>
 						<th><a class="btn btn-success" href="{{ route('tipos.index') }}">Tipo Proyecto</a></th>
 						<th>Empresa</th>
+						<th>Usuarios</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -32,9 +33,10 @@
 						<td>{{ $proyecto->requerimiento }}</td>
 						<td>{{ $proyecto->tipo['tipo'] }}</td>
 						<td>{{ $proyecto->empresa['nombre'] }}</td>
+						<td>{{ $proyecto->users->pluck('name')->implode(', ') }}</td>
 						<td>
 							<a class="btn btn-outline-primary" href="{{ route('proyectos.edit', $proyecto->id) }}">Editar</a>
-							<a class="btn btn-info" href="{{ route('assignedProjects', $proyecto->id) }}">Asignar Proyecto</a>
+							<a class="btn btn-info" href="{{ route('assignProjects', $proyecto->id) }}">Asignar</a>
 						</td>
 					</tr>
 					@endforeach

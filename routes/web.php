@@ -35,8 +35,9 @@ Route::resource('empresas', 'EmpresasController')->except('destroy');
 Route::resource('proyectos', 'ProyectosController')->except('destroy');
 Route::resource('tipos', 'TiposController')->except('show', 'destroy');
 
-Route::get('proyectos/{id}/assignedProjects', 'AsignarProyectosController@assignedProjects')->name('assignedProjects');
-Route::put('proyectos/{id}', 'AsignarProyectosController@assignProject')->name('assignProject');
+Route::get('assignProjects/{id}/asignar', 'ProjectsController@assignProjects')->name('assignProjects');
+Route::put('assignUser/{id}', 'ProjectsController@assignUser')->name('assignUser');
+Route::get('projectIndex/{id}', 'ProjectsController@projectIndex')->name('projectIndex');
 
 Route::resource('categorias', 'CategoriasController')->except('show', 'destroy');
 

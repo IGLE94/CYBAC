@@ -1,16 +1,16 @@
 <nav class="navbar navbar-light navbar-expand-lg bg-white shadow-sm">
-	
+
 	<div class="container">
 
 		<a class="navbar-brand" href="{{ route('home') }}">
 			{{-- {{ config('app.name') }} --}} <img class="img-fluid logo" src="/img/logo.png" alt="logo">
 		</a>
 
-		<button class="navbar-toggler" type="button" 
-			data-toggle="collapse" 
-			data-target="#navbarSupportedContent" 
-			aria-controls="navbarSupportedContent" 
-			aria-expanded="false" 
+		<button class="navbar-toggler" type="button"
+			data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
 			aria-label="{{ __('Toggle navigation') }}">
 	        <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -43,10 +43,10 @@
 					@endif
 
 					<li class="nav-item">
-						<a class="nav-link" href="#">Proyectos Asignados</a>
+						<a class="nav-link" href="{{ route('projectIndex', auth()->id() ) }}">Proyectos Asignados</a>
 					</li>
 
-	
+
 					{{-- <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownThree" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           					Mi cuenta
@@ -72,7 +72,7 @@
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownThree" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           					{{ auth()->user()->name }}
         		</a>
-        		
+
         		<div class="dropdown-menu" aria-labelledby="navbarDropdownThree">
         			<a class="dropdown-item" href="/usuarios/{{ auth()->id() }}/editar">Mi Perfil</a>
         			<a class="dropdown-item" href="#" onclick="event.preventDefault();
